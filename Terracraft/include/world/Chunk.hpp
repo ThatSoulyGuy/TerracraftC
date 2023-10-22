@@ -201,13 +201,6 @@ struct Chunk
 
 		indiceIndex += 4;
 	}
-
-	static Chunk& Register()
-	{
-		Chunk out = {};
-
-		return out;
-	}
 };
 
 #endif // !CHUNK_HPP

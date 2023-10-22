@@ -11,7 +11,6 @@
 
 Player player;
 Window window;
-Chunk chunk;
 
 int main()
 {
@@ -30,8 +29,6 @@ int main()
 	EventSystem::DispatchEvent(EventType::TC_PRE_INIT_EVENT, NULL);
 	
 	Input::InitInput(window.data.window);
-
-	chunk.GenerateChunk();
 
 	player.InitalizePlayer(glm::vec3{ 6.0f, 24.0f, 6.0f });
 
