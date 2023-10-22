@@ -184,6 +184,7 @@
     <ClInclude Include="Terracraft\include\rendering\Renderer.hpp" />
     <ClInclude Include="Terracraft\include\rendering\ShaderManager.hpp" />
     <ClInclude Include="Terracraft\include\rendering\TextureManager.hpp" />
+    <ClInclude Include="Terracraft\include\threading\ThreadManager.hpp" />
     <ClInclude Include="Terracraft\include\util\ANSIFormatter.hpp" />
     <ClInclude Include="Terracraft\include\util\General.hpp" />
     <ClInclude Include="Terracraft\include\util\Pair.hpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="Terracraft\include\world\BlockType.hpp" />
     <ClInclude Include="Terracraft\include\world\Chunk.hpp" />
     <ClInclude Include="Terracraft\include\world\TextureAtlasManager.hpp" />
+    <ClInclude Include="Terracraft\include\world\World.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\terracraft\shaders\defaultFragment.glsl" />

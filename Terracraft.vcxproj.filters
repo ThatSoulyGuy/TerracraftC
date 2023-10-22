@@ -83,6 +83,12 @@
     <ClInclude Include="Terracraft\include\math\Raycast.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Terracraft\include\world\World.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Terracraft\include\threading\ThreadManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\terracraft\shaders\defaultFragment.glsl" />

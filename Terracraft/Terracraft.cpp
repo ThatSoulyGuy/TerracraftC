@@ -5,8 +5,9 @@
 #include "gameplay/Player.hpp"
 #include "rendering/Renderer.hpp"
 #include "rendering/TextureManager.hpp"
+#include "threading/ThreadManager.hpp"
 #include "world/BlockType.hpp"
-#include "world/Chunk.hpp"
+#include "world/World.hpp"
 #include "world/TextureAtlasManager.hpp"
 
 Player player;
@@ -32,7 +33,7 @@ int main()
 
 	player.InitalizePlayer(glm::vec3{ 6.0f, 24.0f, 6.0f });
 
-	Settings::randomData.insert({ "mainChunk", &chunk });
+	Settings::randomData.insert({ "mainChunk", nullptr});
 	EventSystem::DispatchEvent(EventType::TC_INIT_EVENT, NULL);
 
 	Logger_WriteConsole("Hello, World!", LogLevel::INFO);
@@ -43,6 +44,8 @@ int main()
 
 		player.Update();
 		Renderer::RenderObjects(player.data.camera);
+		
+		//ThreadManager::RunFunction(World::UpdateWorld, player.data.transform.position);
 
 		window.UpdateBuffers();
 
@@ -53,6 +56,7 @@ int main()
 	Renderer::CleanUpObjects();
 
 	EventSystem::DispatchEvent(EventType::TC_CLEANUP_EVENT, NULL);
+	World::CleanUp();
 
 	Logger_CleanUp();
 

@@ -10,6 +10,7 @@
 struct Chunk
 {
 	RenderableObject object = {};
+	glm::ivec3 position;
 
 	std::vector<Vertex> vertices = {};
 	std::vector<unsigned int> indices = {};
@@ -17,8 +18,10 @@ struct Chunk
 
 	int blocks[CHUNK_SIZE][CHUNK_SIZE][CHUNK_SIZE];
 
-	void GenerateChunk()
+	void GenerateChunk(const glm::ivec3& position)
 	{
+		this->position = position;
+
 		for (int x = 0; x < CHUNK_SIZE; ++x)
 		{
 			for (int y = 0; y < CHUNK_SIZE; ++y)
@@ -78,6 +81,7 @@ struct Chunk
 		}
 
 		object = RenderableObject::Register("chunk", vertices, indices);
+		object.data.transform.position = position;
 		object.RegisterTexture("default_texture", TextureAtlasManager::atlas);//TextureManager::GetTexture("test_texture")
 		object.GenerateRawData();
 
