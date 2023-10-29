@@ -34,6 +34,7 @@ int main()
 	chunk.GenerateChunk();
 
 	player.InitalizePlayer(glm::vec3{ 6.0f, 24.0f, 6.0f });
+	player.data.currentChunk = &chunk;
 
 	Settings::randomData.insert({ "mainChunk", &chunk });
 	EventSystem::DispatchEvent(EventType::TC_INIT_EVENT, NULL);

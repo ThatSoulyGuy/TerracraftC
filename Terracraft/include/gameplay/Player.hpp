@@ -4,12 +4,14 @@
 #include "math/AABBCollision.hpp"
 #include "math/Raycast.hpp"
 #include "rendering/Camera.hpp"
+#include "world/Chunk.hpp"
 
 struct PlayerData
 {
 	Transform transform;
 	Camera camera;
 	BoundingBox collider;
+	Chunk* currentChunk;
 };
 
 struct Player
@@ -61,6 +63,15 @@ struct Player
 
 		if (Input::GetKeyDown(GLFW_KEY_D))
 			data.transform.position += data.camera.data.right * velocity;
+
+		data.collider.Update(data.transform.position);
+		
+		static int collisionCount = 0;
+		if (data.currentChunk->GetAABB().IsCollidingWith(data.collider))
+		{
+			std::string msg = "Collision frame ct: " + std::to_string(collisionCount++);
+			Logger_WriteConsole(msg, LogLevel::DEBUG);
+		}
 
 		data.camera.UpdateCameraVectors();
 	}
