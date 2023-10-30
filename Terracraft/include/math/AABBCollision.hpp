@@ -19,11 +19,20 @@ struct BoundingBox
     static BoundingBox Register(const glm::vec3& position, const glm::vec3& size)
     {
         BoundingBox out = {};
-
-        out.min = position;
-        out.max = size;
-
+        out.Update(position, size);
         return out;
+    }
+
+    void Update(const glm::vec3 & position)
+    {
+        auto size = max - min;
+        Update(position, size);
+    }
+
+    void Update(const glm::vec3 & position, const glm::vec3 & size)
+    {
+        min = position;
+        max = position + size;
     }
 };
 

@@ -17,6 +17,15 @@ struct Chunk
 
 	int blocks[CHUNK_SIZE][CHUNK_SIZE][CHUNK_SIZE];
 
+	BoundingBox GetAABB() const
+	{
+		auto position{ glm::vec3{ 0.0, 0.0, 0.0 } };
+		auto chunkSize{ (float)CHUNK_SIZE };
+		auto size{ glm::vec3{ chunkSize, chunkSize, chunkSize } };
+		auto aabb{ BoundingBox::Register(position, size) };
+		return aabb;
+	}
+
 	void GenerateChunk()
 	{
 		for (int x = 0; x < CHUNK_SIZE; ++x)
